@@ -1,0 +1,44 @@
+{
+  "name": "emites-client-nodejs",
+  "version": "0.1.0",
+  "description": "Emites REST API Client for NodeJS",
+  "main": "./lib/emites",
+  "scripts": {
+    "test": "mocha tests/* -t 70000 -R spec --bail --globals domain,_events,_maxListeners",
+    "lint": "eslint ./lib ./tests"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "~5.2.0",
+    "nock": "~10.0.6"
+  },
+  "dependencies": {
+    "axios": "~0.18.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myfreecomm/emites-client-nodejs.git"
+  },
+  "keywords": [
+    "emites",
+    "client",
+    "nodejs",
+    "nexaas",
+    "myfreecomm",
+    "nfce",
+    "nfe",
+    "nota",
+    "fiscal"
+  ],
+  "author": "Luis Fernando Nascimento (luis.nascimento@nexaas.com) - Nexaas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/myfreecomm/emites-client-nodejs/issues"
+  },
+  "homepage": "https://github.com/myfreecomm/emites-client-nodejs#readme"
+}

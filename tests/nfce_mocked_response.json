@@ -1,0 +1,10 @@
+{
+  "nfce": {
+    "id": 555,
+    "status": "succeeded",
+    "data": {},
+    "danfe_url": "http://emites-ruby-sandbox.s3.amazonaws.com/nfce/pdf_files/000/015/761/original/danfe.pdf?153719",
+    "xml_url": "http://emites-ruby-sandbox.s3.amazonaws.com/nfce/xml_files/000/015/761/original/nfce.xml?15379",
+    "taxrules_calculation_log": null
+  }
+}
