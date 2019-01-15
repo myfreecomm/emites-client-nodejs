@@ -11,9 +11,35 @@ describe('Emites', () => {
   const invalidNFCeId = 666;
   let emites = null;
 
+  /* eslint-disable no-new */
+  describe('Validating config', () => {
+    context('without config object', () => {
+      const error = { name: 'TypeError', message: 'config must be object, got undefined' };
+
+      it('should throw an type error', () => {
+        assert.throws(() => { new Emites(); }, error);
+      });
+    });
+    context('without access_token', () => {
+      const error = { name: 'Error', message: 'Emites config must include `access_token`.' };
+
+      it('should throw an error', () => {
+        assert.throws(() => { new Emites({ host: HOST }); }, error);
+      });
+    });
+
+    context('without host', () => {
+      const error = { name: 'Error', message: 'Emites config must include `host`.' };
+
+      it('should throw an error', () => {
+        assert.throws(() => { new Emites({}); }, error);
+      });
+    });
+  });
+
   describe('GET #getNFCe', () => {
     before(() => {
-      emites = new Emites({ host: HOST, accessToken: 'foo' });
+      emites = new Emites({ host: HOST, access_token: 'foo' });
     });
 
     context('when it succeed', () => {
@@ -47,6 +73,10 @@ describe('Emites', () => {
   });
 
   describe('POST #createNFCeBatchNFCe', () => {
+    before(() => {
+      emites = new Emites({ host: HOST, access_token: 'foo' });
+    });
+
     context('when it succeed', () => {
       const contents = fs.readFileSync('tests/support/nfce_batch_created_mocked_response.json');
       const jsonContent = JSON.parse(contents);
