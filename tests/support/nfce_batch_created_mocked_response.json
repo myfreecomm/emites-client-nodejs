@@ -1,0 +1,12 @@
+{
+  "nfce_batch":{
+    "id": 1008,
+     "key": null,
+     "nfces":[
+      {
+        "id": 1294,
+        "status": "processing"
+      }
+    ]
+  }
+}
