@@ -37,7 +37,7 @@ describe('Emites', () => {
     });
   });
 
-  describe('GET #getNFCe', () => {
+  describe('GET #nfce', () => {
     before(() => {
       emites = new Emites({ host: HOST, access_token: 'foo' });
     });
@@ -46,7 +46,7 @@ describe('Emites', () => {
       const error = { name: 'TypeError', message: 'Function args must have organizationId and id' };
 
       it('should throw a type error', () => {
-        assert.rejects(async () => { await emites.getNFCe(); }, error);
+        assert.rejects(async () => { await emites.nfce(); }, error);
       });
     });
 
@@ -61,7 +61,7 @@ describe('Emites', () => {
       });
 
       it('should return a NFCe json', async () => {
-        const result = await emites.getNFCe(organizationId, nfceId);
+        const result = await emites.nfce(organizationId, nfceId);
         assert.equal(result.nfce.status, 'succeeded');
       });
     });
@@ -76,7 +76,7 @@ describe('Emites', () => {
       });
 
       it('should respond with not found status (404)', () => {
-        assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
+        assert.rejects(async () => { await emites.nfce(organizationId, invalidNFCeId); }, error);
       });
     });
 
@@ -89,7 +89,7 @@ describe('Emites', () => {
       });
 
       it('should throw a requesting error', () => {
-        assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
+        assert.rejects(async () => { await emites.nfce(organizationId, invalidNFCeId); }, error);
       });
     });
 
@@ -103,7 +103,7 @@ describe('Emites', () => {
       });
 
       it('should throw a invalid token error', () => {
-        assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
+        assert.rejects(async () => { await emites.nfce(organizationId, invalidNFCeId); }, error);
       });
     });
 
@@ -117,7 +117,7 @@ describe('Emites', () => {
       });
 
       it('should throw a invalid token error', () => {
-        assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
+        assert.rejects(async () => { await emites.nfce(organizationId, invalidNFCeId); }, error);
       });
     });
   });
