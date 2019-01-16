@@ -46,7 +46,7 @@ describe('Emites', () => {
       const error = { name: 'TypeError', message: 'Function args must have organizationId and id' };
 
       it('should throw a type error', () => {
-        assert.throws(() => { emites.getNFCe(); }, error);
+        assert.rejects(async () => { await emites.getNFCe(); }, error);
       });
     });
 
@@ -67,7 +67,7 @@ describe('Emites', () => {
     });
 
     context('when NFCe not found', () => {
-      const error = { name: 'Error', message: 'Request failed with status code 404' };
+      const error = { name: 'ResourceNotFoundError', message: 'Resource Not Found' };
 
       before(() => {
         nock(HOST)
@@ -92,6 +92,34 @@ describe('Emites', () => {
         assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
       });
     });
+
+    context('with invalid token', () => {
+      const error = { name: 'InvalidTokenError', message: 'Invalid Access Token' };
+
+      before(() => {
+        nock(HOST)
+          .get(`/api/v1/organizations/${organizationId}/nfce/${invalidNFCeId}`)
+          .reply(403);
+      });
+
+      it('should throw a invalid token error', () => {
+        assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
+      });
+    });
+
+    context('with unexpected status code', () => {
+      const error = { name: 'Error', message: 'Unexpected status code received' };
+
+      before(() => {
+        nock(HOST)
+          .get(`/api/v1/organizations/${organizationId}/nfce/${invalidNFCeId}`)
+          .reply(500);
+      });
+
+      it('should throw a invalid token error', () => {
+        assert.rejects(async () => { await emites.getNFCe(organizationId, invalidNFCeId); }, error);
+      });
+    });
   });
 
   describe('POST #createNFCeBatchNFCe', () => {
@@ -103,7 +131,7 @@ describe('Emites', () => {
       const error = { name: 'TypeError', message: 'Function args must have organizationId and params' };
 
       it('should throw a type error', () => {
-        assert.throws(() => { emites.createNFCeBatch(); }, error);
+        assert.rejects(async () => { await emites.createNFCeBatch(); }, error);
       });
     });
 
