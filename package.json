@@ -1,5 +1,5 @@
 {
-  "name": "emites-client-nodejs",
+  "name": "@nexaas/emites-client",
   "version": "0.1.0",
   "description": "Emites REST API Client for NodeJS",
   "main": "./lib/emites",
@@ -35,10 +35,14 @@
     "nota",
     "fiscal"
   ],
-  "author": "Luis Fernando Nascimento (luis.nascimento@nexaas.com) - Nexaas",
+  "author": "Luis Fernando Nascimento (luis.nascimento@nexaas.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/myfreecomm/emites-client-nodejs/issues"
   },
-  "homepage": "https://github.com/myfreecomm/emites-client-nodejs#readme"
+  "homepage": "https://github.com/myfreecomm/emites-client-nodejs#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  }
 }
