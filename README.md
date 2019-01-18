@@ -1,9 +1,12 @@
 # emites-client-nodejs
 Emites REST API Client for NodeJS
 
+## Installing
+`npm i @nexaas/emites-client`
+
 ## Usage
 ```javascript
-const Emites = require('emites-client-nodejs');
+const Emites = require('@nexaas/emites-client');
 
 const emitesClient = new Emites({ host: 'https://app.emites.com.br', access_token: '...'});
 
