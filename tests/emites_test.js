@@ -99,7 +99,7 @@ describe('Emites', () => {
       before(() => {
         nock(HOST)
           .get(`/api/v1/organizations/${organizationId}/nfce/${invalidNFCeId}`)
-          .reply(403);
+          .reply(401);
       });
 
       it('should throw a invalid token error', () => {
@@ -108,7 +108,7 @@ describe('Emites', () => {
     });
 
     context('with unexpected status code', () => {
-      const error = { name: 'Error', message: 'Unexpected status code received' };
+      const error = { name: 'Error', message: 'Unexpected status code received: 500' };
 
       before(() => {
         nock(HOST)
