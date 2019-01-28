@@ -27,14 +27,6 @@ describe('Emites', () => {
         assert.throws(() => { new Emites({ host: HOST }); }, error);
       });
     });
-
-    context('without host', () => {
-      const error = { name: 'Error', message: 'Emites config must include `host`.' };
-
-      it('should throw an error', () => {
-        assert.throws(() => { new Emites({}); }, error);
-      });
-    });
   });
 
   describe('GET #nfce', () => {
