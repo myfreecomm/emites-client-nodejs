@@ -162,7 +162,7 @@ describe('Emites', () => {
     });
   });
 
-  describe('PATCH #cancellingNFCe', () => {
+  describe('PATCH #cancelNFCe', () => {
     context('when it succeed', () => {
       const contents = fs.readFileSync('tests/support/nfce_cancelled_mocked_response.json');
       const jsonContent = JSON.parse(contents);
@@ -174,7 +174,7 @@ describe('Emites', () => {
       });
 
       it('should return a NFCe json with processing status', async () => {
-        const result = await emites.cancellingNFCe(organizationId, nfceId);
+        const result = await emites.cancelNFCe(organizationId, nfceId);
         assert.equal(result.nfce.status, 'processing');
       });
     });
