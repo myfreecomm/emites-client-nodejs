@@ -52,7 +52,7 @@ describe('Emites', () => {
           .reply(200, jsonContent);
       });
 
-      it('should return a NFCe json', async () => {
+      it('should return a NFCe json with succeeded status', async () => {
         const result = await emites.nfce(organizationId, nfceId);
         assert.equal(result.nfce.status, 'succeeded');
       });
@@ -158,6 +158,24 @@ describe('Emites', () => {
       it('should not create a NFCe and respond with error message', async () => {
         const result = await emites.createNFCeBatch(organizationId, params);
         assert.deepEqual(result, jsonContent);
+      });
+    });
+  });
+
+  describe('PATCH #cancellingNFCe', () => {
+    context('when it succeed', () => {
+      const contents = fs.readFileSync('tests/support/nfce_cancelled_mocked_response.json');
+      const jsonContent = JSON.parse(contents);
+
+      before(() => {
+        nock(HOST)
+          .patch(`/api/v1/organizations/${organizationId}/nfce/${nfceId}/cancel`)
+          .reply(200, jsonContent);
+      });
+
+      it('should return a NFCe json with processing status', async () => {
+        const result = await emites.cancellingNFCe(organizationId, nfceId);
+        assert.equal(result.nfce.status, 'processing');
       });
     });
   });
